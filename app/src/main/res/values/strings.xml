@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tasks</string>
+    <string name="points_0">Points : 0</string>
+    <string name="description">Description</string>
+    <string name="task">Task</string>
+    <string name="settings">Settings</string>
+    <string name="hide_completed_tasks">Hide completed tasks</string>
+</resources>
