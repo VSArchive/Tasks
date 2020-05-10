@@ -40,13 +40,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        noteViewModel = new ViewModelProvider(this).get(RoomViewModel.class);
+
         // Toolbar menu inflater
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.main);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.settings) {
+                if (item.getItemId() == R.id.deleteAll) {
+                    noteViewModel.deleteAllNotes();
+                    return true;
+                } else if (item.getItemId() == R.id.settings) {
                     Intent intent = new Intent(MainActivity.this, Settings.class);
                     startActivity(intent);
                     return true;
@@ -80,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Set tasks in adapter
-        noteViewModel = new ViewModelProvider(this).get(RoomViewModel.class);
         noteViewModel.getAllNotes().observe(this, new Observer<List<RoomEntity>>() {
             @Override
             public void onChanged(@Nullable List<RoomEntity> notes) {

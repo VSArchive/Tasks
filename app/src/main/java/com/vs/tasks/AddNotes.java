@@ -66,7 +66,6 @@ public class AddNotes extends AppCompatActivity implements DatePickerDialog.OnDa
         RoomEntity entity;
         if (currentTime != null) {
             entity = new RoomEntity(title, description, currentDate, currentTime, "pending");
-
         } else {
             Calendar calc = Calendar.getInstance();
             int hour = calc.get(Calendar.HOUR_OF_DAY);
