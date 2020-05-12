@@ -7,13 +7,14 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  test:
+    runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Android Build
-      uses: vgaidarji/android-github-actions-build@v1.0.1
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: run tests
+      uses: reactivecircus/android-emulator-runner@v2
       with:
-        args: "./gradlew assembleDebug"
+        api-level: 29
+        script: ./gradlew connectedCheck
